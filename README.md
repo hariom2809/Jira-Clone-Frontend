@@ -20,7 +20,7 @@ Jira-Clone-Frontend
 |--src/
 |   |
 |   |--components/
-|   |--content/
+|   |--context/
 |   |--hooks/
 |   |--pages/
 |   |--services/

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ProjectDashboard from './pages/ProjectDashboard'
+import ProjectDashboard from './pages/Dashboard'
 
 function App() {
   const [count, setCount] = useState(0)
