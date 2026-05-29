@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import ProjectDashboard from './pages/Dashboard'
+import LoginPage from './pages/LoginPage'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <ProjectDashboard />
+      <LoginPage />
     </>
   )
 }
