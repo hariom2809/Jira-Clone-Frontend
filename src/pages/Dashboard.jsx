@@ -1,22 +1,33 @@
-import { useState } from "react"
-import ProjectCard from '../components/ProjectCard'
+import {useContext, useEffect} from 'react'
+import AuthContext from '../context/AuthContext'
+import api from "../services/api"
 
-export default function Dashboard() {
+function Dashboard() {
 
-    const [projectName, setProjectName] = useState("")
-    const [projectKey, setProjectKey] = useState("")
-    const [projectMemberCount, setProjectMemberCount] = useState(1)
+    useEffect(() => {
+        fetchCurrentUser()
+    }, [])
 
-    return(
+
+    const {currentUser, setCurrentUser} = useContext(AuthContext)
+
+    const fetchCurrentUser = async () => {
+        try {
+            const response = await api.get("/auth/me/")
+            setCurrentUser(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    return (
         <>
-        <div className="bg-[#111827] min-h-screen ">
-            <h2 className="text-[#F9FAFB] text-5xl font-bold">
-                Projects
-            </h2>
-            <div className="grid grid-cols-3 gap-4 mt-10">
-                <ProjectCar />
+            <div>
+                <h1>Projects</h1>
+                <h1>{currentUser?.email}</h1>
             </div>
-        </div>
         </>
     )
 }
+
+export default Dashboard
