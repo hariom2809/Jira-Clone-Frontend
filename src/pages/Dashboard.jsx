@@ -4,12 +4,11 @@ import api from "../services/api"
 
 function Dashboard() {
 
+    const {currentUser, setCurrentUser} = useContext(AuthContext)
+
     useEffect(() => {
         fetchCurrentUser()
     }, [])
-
-
-    const {currentUser, setCurrentUser} = useContext(AuthContext)
 
     const fetchCurrentUser = async () => {
         try {

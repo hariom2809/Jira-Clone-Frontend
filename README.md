@@ -21,14 +21,24 @@ Jira-Clone-Frontend
 |   |
 |   |--components/
 |   |--context/
+|   |   |
+|   |   |--AuthContext.jsx
+|   |   
 |   |--hooks/
 |   |--pages/
+|   |   |
+|   |   |--LoginPage.jsx
+|   |   |--Dashboard.jsx
+|   |   
 |   |--services/
-|   |--App.css
+|   |   |
+|   |   |--api.js
+|   |   
 |   |--App.jsx
 |   |--index.css
 |   |--index.jsx
 |
+|--.env
 |--.gitignore
 |--eslint.config.js
 |--index.html
