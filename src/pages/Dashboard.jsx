@@ -4,7 +4,7 @@ import api from "../services/api"
 
 function Dashboard() {
 
-    const {currentUser, setCurrentUser} = useContext(AuthContext)
+    // const {currentUser, setCurrentUser} = useContext(AuthContext)
 
     useEffect(() => {
         fetchCurrentUser()
@@ -23,7 +23,7 @@ function Dashboard() {
         <>
             <div>
                 <h1>Projects</h1>
-                <h1>{currentUser?.email}</h1>
+                {/* <h1>{currentUser?.email}</h1> */}
             </div>
         </>
     )
