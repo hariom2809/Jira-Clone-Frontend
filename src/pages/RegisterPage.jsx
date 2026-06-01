@@ -13,9 +13,12 @@ function RegisterPage() {
         event.preventDefault()
 
         const validationError = {}
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
         if (!email) {
             validationError.email = "Please enter email"
+        } else if (!emailRegex.test(email)) {
+            validationError.email = "Please enter a valid email"
         }
 
         if (!password) {
@@ -58,6 +61,7 @@ function RegisterPage() {
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)}
                 />
+                {error.email && <p>{error.email}</p>}
             </div>
             <div>
                 <label>Password</label>
@@ -66,6 +70,7 @@ function RegisterPage() {
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                {error.password && <p>{error.password}</p>}
             </div>
             <div>
                 <label>Confirm Password</label>
@@ -74,6 +79,7 @@ function RegisterPage() {
                     value={confirmPassword} 
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
+                {error.confirmPassword && <p>{error.confirmPassword}</p>}
             </div>
             <button 
                 type="submit"
@@ -88,3 +94,4 @@ function RegisterPage() {
 }
 
 export default RegisterPage
+--
