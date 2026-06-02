@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import api from "../services/api"
 
 function RegisterPage() {
+
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -42,10 +45,11 @@ function RegisterPage() {
         setLoading(true)
 
         try {
-            const response = await api.post("/auth/register/", {email, password})
-            
+            await api.post("/auth/register/", {email, password})
+            navigate("/login")
         } catch (error) {
             console.log(error)
+            setError({api: "Registration Faiked, Please try again"})
         } finally{
             setLoading(false)
         }
@@ -81,6 +85,7 @@ function RegisterPage() {
                 />
                 {error.confirmPassword && <p>{error.confirmPassword}</p>}
             </div>
+            {error.api && <p> {error.api} </p>}
             <button 
                 type="submit"
                 disabled={loading}
@@ -94,4 +99,3 @@ function RegisterPage() {
 }
 
 export default RegisterPage
---

@@ -1,18 +1,16 @@
 import {useState, useContext} from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthContext from "../context/AuthContext"
-import api, {setAccessToken as setApiAccessToken} from "../services/api"
+import api from "../services/api"
 
 const LoginPage = () => {
+  
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
-
-  const {setAccessToken} = useContext(AuthContext)
-
-  const navigate = useNavigate()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -21,8 +19,6 @@ const LoginPage = () => {
 
     try {
       const response = await api.post("/auth/login/", {email, password})
-      setAccessToken(response.data.access_token)
-      setApiAccessToken(response.data.access_token)
       navigate("/dashboard")
     } catch (error) {
       console.log(error)
