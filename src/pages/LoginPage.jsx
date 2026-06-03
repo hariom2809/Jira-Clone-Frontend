@@ -1,7 +1,6 @@
-import {useState, useContext} from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AuthContext from "../context/AuthContext"
-import api from "../services/api"
+import { useAuth } from "../hooks/useAuth"
 
 const LoginPage = () => {
   
@@ -11,6 +10,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const { login } = useAuth()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -18,7 +18,7 @@ const LoginPage = () => {
     setError("")
 
     try {
-      const response = await api.post("/auth/login/", {email, password})
+      await login(email, password)
       navigate("/dashboard")
     } catch (error) {
       console.log(error)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import api from "../services/api"
+import { useAuth } from "../hooks/useAuth"
 
 function RegisterPage() {
 
@@ -11,6 +11,7 @@ function RegisterPage() {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({})
+    const { register } = useAuth()
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -45,7 +46,7 @@ function RegisterPage() {
         setLoading(true)
 
         try {
-            await api.post("/auth/register/", {email, password})
+            await register(email, password)
             navigate("/login")
         } catch (error) {
             console.log(error)

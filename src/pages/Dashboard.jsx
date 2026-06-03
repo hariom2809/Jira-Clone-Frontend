@@ -1,32 +1,25 @@
-import {useContext, useEffect} from 'react'
-import AuthContext from '../context/AuthContext'
-import api from "../services/api"
+import ProjectCard from "../components/ProjectCard"
+import { useProject } from "../hooks/useProject"
 
-function Dashboard() {
+const Dashboard = () => {
+  
+  const { projects, isLoading, error } = useProject()
 
-    // const {currentUser, setCurrentUser} = useContext(AuthContext)
+  console.log(projects)
+  console.log(typeof(projects))
 
-    useEffect(() => {
-        fetchCurrentUser()
-    }, [])
+  if (isLoading) return <div> Loading </div>
 
-    const fetchCurrentUser = async () => {
-        try {
-            const response = await api.get("/auth/me/")
-            setCurrentUser(response.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    return (
-        <>
-            <div>
-                <h1>Projects</h1>
-                {/* <h1>{currentUser?.email}</h1> */}
-            </div>
-        </>
-    )
+  return (
+    <div>
+      {projects.map((project) => (
+        <ProjectCard
+          key={project.id}
+          project={project}
+        />
+      ))}
+    </div>
+  )
 }
 
 export default Dashboard
