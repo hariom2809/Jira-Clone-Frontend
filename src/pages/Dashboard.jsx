@@ -5,9 +5,6 @@ const Dashboard = () => {
   
   const { projects, isLoading, error } = useProject()
 
-  console.log(projects)
-  console.log(typeof(projects))
-
   if (isLoading) return <div> Loading </div>
 
   return (
