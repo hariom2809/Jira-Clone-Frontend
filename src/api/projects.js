@@ -5,7 +5,7 @@ export const getProjects = async () => {
     return response.data
 }
 
-export const postProject = async () => {
-    const response = await api.post("/projects/", {key, name, description})
+export const postProject = async (projectData) => {
+    const response = await api.post("/projects/", projectData)
     return response.data
 }
