@@ -19,7 +19,7 @@ const LoginPage = () => {
 
     try {
       await login(email, password)
-      navigate("/dashboard")
+      navigate("/kanban")
     } catch (error) {
       console.log(error)
       setError("Login Failed")

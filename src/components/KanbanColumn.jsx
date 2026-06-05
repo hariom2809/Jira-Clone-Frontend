@@ -1,6 +1,6 @@
 import { useDroppable } from "@dnd-kit/react"
 
-export default KanbanColumn ({ref, title, children}) {
+export default function KanbanColumn ({id, title, children}) {
     
     const { ref } = useDroppable({
         id,

@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard.jsx"
 import RegisterPage from "./pages/RegisterPage.jsx"
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import KanbanBoard from "./pages/KanbanBoard.jsx"
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />
+  },
+  {
+    path: "/kanban",
+    element: (
+      <ProtectedRoute>
+        <KanbanBoard />
+      </ProtectedRoute>
+    )
   }
 ])
 

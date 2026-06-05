@@ -1,17 +1,65 @@
 import { useState } from "react"
+import { DragDropProvider } from "@dnd-kit/react";
 import { useIssues } from "../hooks/issueHooks"
 import IssueCard from "../components/IssueCard"
 import KanbanColumn from "../components/KanbanColumn"
 
-export default KambanBoard () {
+export const mockIssues = [
+  {
+    id: "1",
+    number: "PROJ-1",
+    title: "Fix login authentication bug",
+    status: "to_do",
+    priority: "high",
+    assignee: {
+      id: "u1",
+      name: "Hariom Gupta",
+    },
+  },
+  {
+    id: "2",
+    number: "PROJ-2",
+    title: "Implement issue comments API",
+    status: "in_progress",
+    priority: "medium",
+    assignee: {
+      id: "u2",
+      name: "John Smith",
+    },
+  },
+  {
+    id: "3",
+    number: "PROJ-3",
+    title: "Review RBAC permission updates",
+    status: "in_review",
+    priority: "highest",
+    assignee: {
+      id: "u3",
+      name: "Sarah Wilson",
+    },
+  },
+  {
+    id: "4",
+    number: "PROJ-4",
+    title: "Deploy latest release",
+    status: "done",
+    priority: "low",
+    assignee: {
+      id: "u4",
+      name: "Mike Johnson",
+    },
+  },
+];
 
-    const projectId = 1234
+export default function KambanBoard () {
 
-    const issuesQuery = useIssues(projectId)
-    const issues = issuesQuery.data?.results || []
+    // const projectId = 1234
 
-    if (issuesQuery.isLoading) return <div> Loading ...</div>
-    if (issuesQuery.isError) return <div>  Failed to load issues </div>
+    // const issuesQuery = useIssues(projectId)
+    const issues = mockIssues
+
+    // if (issuesQuery.isLoading) return <div> Loading ...</div>
+    // if (issuesQuery.isError) return <div>  Failed to load issues </div>
 
     const todoIssues = issues.filter(
         (issues) => issues.status === "to_do"
@@ -34,7 +82,7 @@ export default KambanBoard () {
     }
 
     return(
-        <DragContext onDragEnd={handleDragEnd}>
+        <DragDropProvider onDragEnd={handleDragEnd}>
             <div>
                 <h1>Kanabn Board</h1>
 
@@ -74,6 +122,6 @@ export default KambanBoard () {
                     </KanbanColumn>
                 </div>
             </div>
-        </DragContext>
+        </DragDropProvider>
     )
 }

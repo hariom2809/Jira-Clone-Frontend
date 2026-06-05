@@ -1,6 +1,6 @@
 import { useDraggable } from "@dnd-kit/react"
 
-export default IssueCard ({ issue }) {
+export default function IssueCard ({ issue }) {
 
     const { ref } = useDraggable({
         id: issue.id,
