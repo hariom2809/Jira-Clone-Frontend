@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useIssues } from "../hooks/issueHooks"
 import IssueCard from "../components/IssueCard"
+import KanbanColumn from "../components/KanbanColumn"
 
 export default KambanBoard () {
 
@@ -28,48 +29,51 @@ export default KambanBoard () {
         (issues) => issues.status === "done"
     )
 
-    return(
-        <div>
-            <h1>Kanabn Board</h1>
+    const handleDragEnd = (event) => {
+        console.log(event)
+    }
 
+    return(
+        <DragContext onDragEnd={handleDragEnd}>
             <div>
+                <h1>Kanabn Board</h1>
+
                 <div>
-                    <h2>To Do</h2>
-                    {todoIssues.map((issue) => (
-                        <IssueCard
-                            key={issue.id}
-                            issue={issue}
-                        />
-                    ))}
-                </div>
-                <div>
-                    <h2>In Progress</h2>
-                    {inProjgressIssues.map((issue) => (
-                        <IssueCard
-                            key={issue.id}
-                            issue={issue}
-                        />
-                    ))}
-                </div>
-                <div>
-                    <h2>In Review</h2>
-                    {inReviewIssues.map((issue) => (
-                        <IssueCard
-                            key={issue.id}
-                            issue={issue}
-                        />
-                    ))}
-                </div>
-                <div>
-                    <h2>Done</h2>
-                    {doneIssues.map((issue) => (
-                        <IssueCard
-                            key={issue.id}
-                            issue={issue}
-                        />
-                    ))}
+                    <KanbanColumn id="todo" title="To Do">
+                        {todoIssues.map((issue) => (
+                            <IssueCard
+                                key={issue.id}
+                                issue={issue}
+                            />
+                        ))}
+                    </KanbanColumn>
+                    <KanbanColumn id="inProgress" title="In Progress">
+                        {inProjgressIssues.map((issue) => (
+                            <IssueCard
+                                key={issue.id}
+                                issue={issue}
+                            />
+                        ))}
+                    </KanbanColumn>
+                    <KanbanColumn id="inReview" title="In Review">
+                        {inReviewIssues.map((issue) => (
+                            <IssueCard
+                                key={issue.id}
+                                issue={issue}
+                            />
+                        ))}
+                    </KanbanColumn>
+                    <KanbanColumn id="done" title="Done">
+                        <h2>Done</h2>
+                        {doneIssues.map((issue) => (
+                            <IssueCard
+                                key={issue.id}
+                                issue={issue}
+                            />
+                        ))}
+                    </KanbanColumn>
                 </div>
             </div>
-        </div>
+        </DragContext>
     )
 }

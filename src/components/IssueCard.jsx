@@ -1,10 +1,14 @@
-export default IssueCard (issue) {
+import { useDraggable } from "@dnd-kit/react"
+
+export default IssueCard ({ issue }) {
+
+    const { ref } = useDraggable({
+        id: issue.id,
+    })
+
     return (
-        <div>
-            <h3>{issue.title}</h3>
-            <div> {issue.number} </div>
-            <div> {issue.priority} </div>
-            <div> {issue.assignee?.name?.chatAt(0)} </div>
+        <div ref={ref}>
+            <p>{issue.title}</p>
         </div>
     )
 }
