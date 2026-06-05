@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useIssues } from "../hooks/issueHooks"
+import IssueCard from "../components/IssueCard"
 
 export default KambanBoard () {
 
@@ -35,33 +36,37 @@ export default KambanBoard () {
                 <div>
                     <h2>To Do</h2>
                     {todoIssues.map((issue) => (
-                        <div key={issue.id}>
-                        {issue.title}
-                        </div>
+                        <IssueCard
+                            key={issue.id}
+                            issue={issue}
+                        />
                     ))}
                 </div>
                 <div>
                     <h2>In Progress</h2>
                     {inProjgressIssues.map((issue) => (
-                        <div key={issue.id}>
-                        {issue.title}
-                        </div>
+                        <IssueCard
+                            key={issue.id}
+                            issue={issue}
+                        />
                     ))}
                 </div>
                 <div>
                     <h2>In Review</h2>
                     {inReviewIssues.map((issue) => (
-                        <div key={issue.id}>
-                        {issue.title}
-                        </div>
+                        <IssueCard
+                            key={issue.id}
+                            issue={issue}
+                        />
                     ))}
                 </div>
                 <div>
                     <h2>Done</h2>
                     {doneIssues.map((issue) => (
-                        <div key={issue.id}>
-                        {issue.title}
-                        </div>
+                        <IssueCard
+                            key={issue.id}
+                            issue={issue}
+                        />
                     ))}
                 </div>
             </div>
