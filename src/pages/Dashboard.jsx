@@ -16,20 +16,25 @@ const Dashboard = () => {
     if (query.isLoading) return <div> Loading </div>
 
     return (
-      <>
-        <button  onClick={() => setShowProjectForm(true)}>
-          Create
-        </button>
-        {showProjectForm && 
-          <div>
-            <ProjectForm /> 
-            
-            <button onClick={() => setShowProjectForm(false)}>
-              Close
-            </button>
-          </div>
-        }
-        <div>
+      <div className="min-h-screen bg-[#111827] p-8">
+        <div className="mb-8 flex items-center justify-between">
+          <h1 className="text-3xl font-bold text-[#F9FAFB]">
+            Projects
+          </h1>
+
+          <button
+            onClick={() => setShowProjectForm(true)}
+            className="rounded-lg bg-[#3B82F6] px-4 py-2 font-medium text-white hover:bg-[#2563EB]"
+          >
+            Create Project
+          </button>
+        </div>
+
+        {showProjectForm && (
+          <ProjectForm onClose={() => setShowProjectForm(false)} />
+        )}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+        >
           {query.data?.results.map((project) => (
             <ProjectCard
               key={project.id}
@@ -50,7 +55,7 @@ const Dashboard = () => {
             }}
           />
         }
-      </>
+      </div>
     )
 }
 
