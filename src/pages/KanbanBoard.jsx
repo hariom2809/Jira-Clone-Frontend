@@ -56,7 +56,7 @@ export default function KambanBoard () {
     // const projectId = 1234
 
     // const issuesQuery = useIssues(projectId)
-    const issues = mockIssues
+    const [issues, setIssues] = useState(mockIssues)
 
     // if (issuesQuery.isLoading) return <div> Loading ...</div>
     // if (issuesQuery.isError) return <div>  Failed to load issues </div>
@@ -78,7 +78,17 @@ export default function KambanBoard () {
     )
 
     const handleDragEnd = (event) => {
-        console.log(event)
+        const { source, target } = event.operation
+
+        if (target) return
+
+        const issueId = source.id
+        const newStatus = target.id
+
+        setIssues((prevIssues) =>
+            prevIssues.map((issue) =>
+                issue.id === issueId ? {...issue, status: newStatus} : issue
+    ))
     }
 
     return(
@@ -87,7 +97,7 @@ export default function KambanBoard () {
                 <h1>Kanabn Board</h1>
 
                 <div>
-                    <KanbanColumn id="todo" title="To Do">
+                    <KanbanColumn id="to_do" title="To Do">
                         {todoIssues.map((issue) => (
                             <IssueCard
                                 key={issue.id}
@@ -95,7 +105,7 @@ export default function KambanBoard () {
                             />
                         ))}
                     </KanbanColumn>
-                    <KanbanColumn id="inProgress" title="In Progress">
+                    <KanbanColumn id="in_progress" title="In Progress">
                         {inProjgressIssues.map((issue) => (
                             <IssueCard
                                 key={issue.id}
@@ -103,7 +113,7 @@ export default function KambanBoard () {
                             />
                         ))}
                     </KanbanColumn>
-                    <KanbanColumn id="inReview" title="In Review">
+                    <KanbanColumn id="in_review" title="In Review">
                         {inReviewIssues.map((issue) => (
                             <IssueCard
                                 key={issue.id}
@@ -112,7 +122,6 @@ export default function KambanBoard () {
                         ))}
                     </KanbanColumn>
                     <KanbanColumn id="done" title="Done">
-                        <h2>Done</h2>
                         {doneIssues.map((issue) => (
                             <IssueCard
                                 key={issue.id}

@@ -4,6 +4,9 @@ export default function KanbanColumn ({id, title, children}) {
     
     const { ref } = useDroppable({
         id,
+        data: {
+            columnId: id,
+        }
     })
 
     return (

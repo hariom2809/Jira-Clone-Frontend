@@ -4,6 +4,10 @@ export default function IssueCard ({ issue }) {
 
     const { ref } = useDraggable({
         id: issue.id,
+        data: {
+            issueId: issue.id,
+            status: issue
+        }
     })
 
     return (
