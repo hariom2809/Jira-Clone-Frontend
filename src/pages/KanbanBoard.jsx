@@ -53,13 +53,11 @@ export const mockIssues = [
 
 export default function KambanBoard () {
 
-    // const projectId = 1234
+    const issuesQuery = useIssues(projectId)
+    const [issues, setIssues] = useState([])
 
-    // const issuesQuery = useIssues(projectId)
-    const [issues, setIssues] = useState(mockIssues)
-
-    // if (issuesQuery.isLoading) return <div> Loading ...</div>
-    // if (issuesQuery.isError) return <div>  Failed to load issues </div>
+    if (issuesQuery.isLoading) return <div> Loading ...</div>
+    if (issuesQuery.isError) return <div>  Failed to load issues </div>
 
     const todoIssues = issues.filter(
         (issues) => issues.status === "to_do"

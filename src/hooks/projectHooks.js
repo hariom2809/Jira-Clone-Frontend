@@ -1,10 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getProjects, postProject } from "../api/projects";
+import { getProject, listProjects, postProject } from "../api/projects";
 
 export const useProject = () => {
     return useQuery({
         queryKey: ["projects"],
-        queryFn: getProjects,
+        queryFn: listProjects,
     })
 }
 
@@ -19,5 +19,13 @@ export const useCreateProject = () => {
                 queryKey: ["projects"],
             })
         }
+    })
+}
+
+export const useGetProject = (projectId) => {
+    return useQuery({
+        queryKey: ["project", projectId],
+        queryFn: () => getProject(projectId),
+        enabled: Boolean(projectId),
     })
 }

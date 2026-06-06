@@ -3,11 +3,14 @@ import { useProject } from "../hooks/projectHooks"
 import Button from "../components/Button"
 import ProjectForm from "../components/ProjectForm"
 import { useState } from "react"
+import ProjectDetailsModel from "../components/ProjectDetailsModel"
 
 const Dashboard = () => {
     
     const query = useProject()
 
+    const [selectProject, setSelectProject] = useState(null)
+    const [showProjectDetails, setShowProjectDetails] = useState(false)
     const [showProjectForm, setShowProjectForm] = useState(false)
 
     if (query.isLoading) return <div> Loading </div>
@@ -21,7 +24,7 @@ const Dashboard = () => {
           <div>
             <ProjectForm /> 
             
----            <button onClick={() => setShowProjectForm(false)}>
+            <button onClick={() => setShowProjectForm(false)}>
               Close
             </button>
           </div>
@@ -31,9 +34,22 @@ const Dashboard = () => {
             <ProjectCard
               key={project.id}
               project={project}
+              onClick={() => {
+                setSelectProject(project.id)
+                setShowProjectDetails(true)
+              }}
             />
           ))}
         </div>
+        {showProjectDetails && 
+          <ProjectDetailsModel
+            projectId={selectProject}
+            onClose={() => {
+              setSelectProject(null)
+              setShowProjectDetails(false)
+            }}
+          />
+        }
       </>
     )
 }
