@@ -1,4 +1,4 @@
-import { useGetProject } from "../hooks/projectHooks"
+import { useGetProject } from "../../hooks/projectHooks"
 
 const ProjectDetailsModel = ({ projectId, onClose }) => {
     const query = useGetProject(projectId)

@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { DragDropProvider } from "@dnd-kit/react";
 import { useIssues } from "../hooks/issueHooks"
-import IssueCard from "../components/IssueCard"
-import KanbanColumn from "../components/KanbanColumn"
+import IssueCard from "../components/ui/IssueCard"
+import KanbanColumn from "../components/ui/KanbanColumn"
 
 export const mockIssues = [
   {
