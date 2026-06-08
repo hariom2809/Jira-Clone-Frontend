@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useProject } from "../hooks/projectHooks"
-import Button from "../components/ui/Button"
-import Header from "../components/layout/Header"
-import PageContainer from "../components/ui/PageContainer"
-import Card from "../components/ui/Card"
-import ProjectForm from "../components/features/project/components/ProjectForm"
-import Modal from "../components/ui/Modal"
-import ProjectDetailsModel from "../components/ui/ProjectDetailsModel"
+import Button from "../../../components/ui/Button"
+import Header from "../../../components/layout/Header"
+import PageContainer from "../../../components/ui/PageContainer"
+import Card from "../../../components/ui/Card"
+import ProjectForm from "../components/ProjectForm"
+import Modal from "../../../components/ui/Modal"
+import ProjectDetailsModel from "../../../components/ui/ProjectDetailsModel"
 
 const Dashboard = () => {
     

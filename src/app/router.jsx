@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import AppLayout from "../components/layout/AppLayout"
-import ProtectedRoute from "../components/ProtectedRoute"
+import ProtectedRoute from "../routes/ProtectedRoute"
 import LoginPage from "../pages/LoginPage"
 import Dashboard from "../pages/Dashboard"
 import KanbanBoard from "../pages/KanbanBoard"
