@@ -4,7 +4,8 @@ import Button from "../components/ui/Button"
 import Header from "../components/layout/Header"
 import PageContainer from "../components/ui/PageContainer"
 import Card from "../components/ui/Card"
-import ProjectForm from "../components/ui/ProjectForm"
+import ProjectForm from "../components/features/project/components/ProjectForm"
+import Modal from "../components/ui/Modal"
 import ProjectDetailsModel from "../components/ui/ProjectDetailsModel"
 
 const Dashboard = () => {
@@ -29,9 +30,15 @@ const Dashboard = () => {
       />
 
       <div>
-        {showProjectForm && (
-          <ProjectForm onClose={() => setShowProjectForm(false)} />
-        )}
+        <Modal
+          isOpen={showProjectForm}
+          onClose={() => setShowProjectForm(false)}
+          title="Create Project"
+        >
+          <ProjectForm
+            onClose={() => setShowProjectForm(false)}
+          />
+        </Modal>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
           {query.data?.results.map((project) => (
             <Card
