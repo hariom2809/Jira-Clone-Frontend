@@ -19,24 +19,40 @@ Jira-Clone-Frontend
 |--public/
 |--src/
 |   |
+|   |--app/
+|   |   |
+|   |   |--api.js
+|   |   |--router.jsx
+|   |
 |   |--components/
+|   |   |
+|   |   |--layout/
+|   |   |   |
+|   |   |   |--AppLayout.jsx
+|   |   |   |--Header.jsx
+|   |   |   |--Sidebar.jsx
+|   |   |
+|   |   |--ui/
+|   |       |
+|   |       |--Button.jsx
+|   |       |--Card.jsx
+|   |       |--Input.jsx
+|   |       |--Modal.jsx
+|   |       |--PageContainer.jsx
+|   |   
 |   |--context/
 |   |   |
 |   |   |--AuthContext.jsx
-|   |   
-|   |--hooks/
-|   |--pages/
+|   |
+|   |--features/
 |   |   |
-|   |   |--LoginPage.jsx
-|   |   |--Dashboard.jsx
+|   |   |--auth/
+|   |   |--issue/
+|   |   |--kanban/
+|   |   |--project
 |   |   
-|   |--services/
-|   |   |
-|   |   |--api.js
-|   |   
-|   |--App.jsx
 |   |--index.css
-|   |--index.jsx
+|   |--main.jsx
 |
 |--.env
 |--.gitignore

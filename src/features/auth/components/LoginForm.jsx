@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from "../hooks/useAuth"
+import Input from "../../../components/ui/Input"
 
-const LoginPage = () => {
+const LoginForm = () => {
   
   const navigate = useNavigate()
 
@@ -10,6 +11,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  
   const { login } = useAuth()
 
   const handleSubmit = async (event) => {
@@ -19,9 +21,8 @@ const LoginPage = () => {
 
     try {
       await login(email, password)
-      navigate("/dashboard")
+      navigate("/")
     } catch (error) {
-      console.log(error)
       setError("Login Failed")
     } finally {
       setLoading(false)
@@ -31,22 +32,19 @@ const LoginPage = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label >Email</label>
-          <input 
-            type="email" 
+        <Input 
+            label="Email"
+            type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </div>
+            onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <div>
-          <label >Password</label>
-          <input 
+        <Input 
+            label="Password"
             type="password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)} />
-        </div>
+            onChange={(e) => setPassword(e.target.value)}
+        />
 
         <button 
           type="submit"
@@ -59,4 +57,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default LoginForm

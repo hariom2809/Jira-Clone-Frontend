@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import api from "../app/api";
+import { loginUser, registerUser, logoutUser, getCurrentUser } from "../features/auth/services/authApi";
 
 const AuthContext = createContext()
 
@@ -9,24 +9,24 @@ export const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true)
 
     const login = async (email, password) => {
-        await api.post("/auth/login/", {email, password})
+        await loginUser(email, password)
         await fetchCurrentUser()
     }
 
     const register = async (email, password) => {
-        await api.post("/auth/register/", {email, password})
+        await registerUser(email, password)
     }
 
     const logout = async () => {
-        await api.post("/auth/logout/")
+        await logoutUser()
         setCurrentUser(null)
     }
 
     const fetchCurrentUser = async () => {
         
         try {
-            const response = await api.get("/auth/me/")
-            setCurrentUser(response.data)
+            const user = await getCurrentUser()
+            setCurrentUser(user.data)
         } catch (error) {
             setCurrentUser(null)
         } finally {

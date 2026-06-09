@@ -2,14 +2,19 @@ import { createBrowserRouter } from "react-router-dom";
 
 import AppLayout from "../components/layout/AppLayout"
 import ProtectedRoute from "../routes/ProtectedRoute"
-import LoginPage from "../pages/LoginPage"
-import Dashboard from "../pages/Dashboard"
-import KanbanBoard from "../pages/KanbanBoard"
+import LoginPage from "../features/auth/pages/LoginPage"
+import RegisterPage from "../features/auth/pages/RegisterPage"
+import Dashboard from "../features/project/pages/Dashboard"
+import KanbanBoard from "../features/kanban/pages/KanbanBoard"
 
 export const router = createBrowserRouter([
     {
         path: "/login",
         element: <LoginPage />
+    },
+    {
+        path: "/register",
+        element: <RegisterPage />,
     },
     {
         element: (
@@ -19,7 +24,7 @@ export const router = createBrowserRouter([
         ),
         children: [
             {
-                path: "/dashboard",
+                path: "/",
                 element: <Dashboard />,
             },
             {
