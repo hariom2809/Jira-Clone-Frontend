@@ -22,7 +22,6 @@ const LoginForm = () => {
 
     try {
       await login(email, password)
-      console.log("login successful")
       navigate("/")
     } catch (error) {
       setError("Login Failed")
@@ -51,6 +50,7 @@ const LoginForm = () => {
         <Button 
           type="submit"
           disabled={loading}
+          className='w-full mt-5'
         >
           {loading ? "Signing in..." : "Sign in"}
         </Button>

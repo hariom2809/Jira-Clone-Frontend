@@ -68,7 +68,11 @@ export default function RegisterForm () {
             />
             {errors.api && <p> {errors.api} </p>}
 
-            <Button type="submit">
+            <Button 
+                type="submit"
+                disabled={loading}
+                className="mt-5 w-full"
+            >
                 {loading ? "Registering ..." : "Register"}
             </Button>
         </form>
