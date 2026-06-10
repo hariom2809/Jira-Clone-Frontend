@@ -22,6 +22,7 @@ const LoginForm = () => {
 
     try {
       await login(email, password)
+      console.log("login successful")
       navigate("/")
     } catch (error) {
       setError("Login Failed")

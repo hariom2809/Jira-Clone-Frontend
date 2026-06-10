@@ -26,7 +26,7 @@ export const AuthProvider = ({children}) => {
         
         try {
             const user = await getCurrentUser()
-            setCurrentUser(user.data)
+            setCurrentUser(user)
         } catch (error) {
             setCurrentUser(null)
         } finally {
