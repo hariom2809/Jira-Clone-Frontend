@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from "../hooks/useAuth"
 import Input from "../../../components/ui/Input"
+import Button from "../../../components/ui/Button"
 
 const LoginForm = () => {
   
@@ -46,12 +47,12 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button 
+        <Button 
           type="submit"
           disabled={loading}
         >
           {loading ? "Signing in..." : "Sign in"}
-        </button>
+        </Button>
       </form>
     </div>
   )

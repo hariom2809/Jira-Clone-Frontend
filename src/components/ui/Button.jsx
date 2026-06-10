@@ -3,7 +3,20 @@ const Button = ({children, onClick, type="button"}) => {
     <button
         type={type}
         onClick={onClick}
-        className="px-4 py-2 rounded-xl font-medium bg-[#0F172A] border border-[#4B5563] hover-bg-[#2563EB] "
+        className="
+          mt-4
+          w-full
+          py-3
+          rounded-lg 
+          font-medium 
+          border 
+          border-[#4B5563] 
+          bg-[#3B82F6] 
+          hover:bg-[#2563EB] 
+          transition-colors
+          disabled:opacity-50
+          disabled:cursor-not-allowed
+        "
     >
         {children}
     </button>

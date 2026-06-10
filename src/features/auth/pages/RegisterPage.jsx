@@ -1,17 +1,21 @@
+import AuthLayout from "../../../components/layout/AuthLayout"
 import { Link } from "react-router-dom"
 import RegisterForm from "../components/RegisterFrom"
 
 function RegisterPage() {
   return (
-    <div>
+    <AuthLayout 
+      title="Create a new account"
+      subtitle="Sign up"
+    >
         <RegisterForm />
-        <p>
+        <p className="text-center text-sm text-[#F9FAFB] mt-6">
             Already have an account
-            <Link to="/login">
+            <Link to="/login" className="ml-1 text-blue-400 hover:text-blue-300">
                 Log in
             </Link>
         </p>
-    </div>
+    </AuthLayout>
   )
 }
 

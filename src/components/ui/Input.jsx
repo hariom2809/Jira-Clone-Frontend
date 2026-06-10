@@ -10,15 +10,19 @@ export default function Input ({label, error, className = "", ...props}) {
 
             <input
                 className={`
-                    bg-[#374151]
-                    text-[#9CA3AF]
                     w-full
-                    rounded-lg
-                    px-3
-                    py-2
-                    outline-none
+                    px-4
+                    py-3
+                    bg-[#374151]
                     border
+                    rounded-lg
+                    text-[#9CA3AF]
+                    placeholder-gray-500
+                    focus:outline-none
                     focus:ring-2
+                    focus:ring-[#4B5563]
+                    focus:border-[#4B5563]
+                    transition
                     ${error ? "border-red-500" : "border-[#4B5563]" }
                     ${className}`
                 }

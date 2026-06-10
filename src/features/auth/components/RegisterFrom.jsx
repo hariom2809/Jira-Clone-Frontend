@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-
 import { validateRegisterForm } from "../utils/ValidateRegisterForm"
 import Input from "../../../components/ui/Input"
+import Button from "../../../components/ui/Button"
 import { useAuth } from "../hooks/useAuth"
 
 export default function RegisterForm () {
@@ -68,9 +68,9 @@ export default function RegisterForm () {
             />
             {errors.api && <p> {errors.api} </p>}
 
-            <button type="submit">
+            <Button type="submit">
                 {loading ? "Registering ..." : "Register"}
-            </button>
+            </Button>
         </form>
     )
 }
