@@ -8,7 +8,7 @@ export default function ProjectGrid ({projects, onProjectClick}) {
             {projects.map((project) => (
                 <ProjectCard
                     key={project.id}
-                    project={projecct}
+                    project={project}
                     onClick={() => onProjectClick(project.id)}
                 />
             ))}

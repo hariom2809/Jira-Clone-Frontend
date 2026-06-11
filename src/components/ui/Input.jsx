@@ -10,9 +10,8 @@ export default function Input ({label, error, className = "", ...props}) {
 
             <input
                 className={`
-                    w-full
-                    px-4
-                    py-3
+                    px-2
+                    py-1
                     bg-[#374151]
                     border
                     rounded-lg

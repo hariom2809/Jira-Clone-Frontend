@@ -30,7 +30,7 @@ export default function Dashboard() {
         />
 
         <ProjectGrid
-          projects={query.data?.restults || []}
+          projects={query.data?.results || []}
           onProjectClick={(id) => navigate(`/project/${id}`)}
         />
 
