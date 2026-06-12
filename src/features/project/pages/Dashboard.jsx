@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useProject } from "../hooks/useProject"
 import Button from "../../../components/ui/Button"
@@ -8,6 +9,8 @@ import ProjectCreateModal from "../components/ProjectCreateModal"
 
 export default function Dashboard() {
     
+    const navigate = useNavigate()
+
     const query = useProject()
     const [showProjectForm, setShowProjectForm] = useState(false)
 

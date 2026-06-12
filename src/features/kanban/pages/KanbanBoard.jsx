@@ -1,79 +1,34 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DragDropProvider } from "@dnd-kit/react";
-import { useIssues } from "../../issue/hooks/issueHooks"
 import IssueCard from "../../issue/components/IssueCard"
 import KanbanColumn from "../components/KanbanColumn"
 
-export const mockIssues = [
-  {
-    id: "1",
-    number: "PROJ-1",
-    title: "Fix login authentication bug",
-    status: "to_do",
-    priority: "high",
-    assignee: {
-      id: "u1",
-      name: "Hariom Gupta",
+const columns = [
+    {
+        id: "to_do",
+        title: "To Do",
     },
-  },
-  {
-    id: "2",
-    number: "PROJ-2",
-    title: "Implement issue comments API",
-    status: "in_progress",
-    priority: "medium",
-    assignee: {
-      id: "u2",
-      name: "John Smith",
+    {
+        id: "in_progress",
+        title: "In Progress",
     },
-  },
-  {
-    id: "3",
-    number: "PROJ-3",
-    title: "Review RBAC permission updates",
-    status: "in_review",
-    priority: "highest",
-    assignee: {
-      id: "u3",
-      name: "Sarah Wilson",
+    {
+        id: "in_review",
+        title: "In Review",
     },
-  },
-  {
-    id: "4",
-    number: "PROJ-4",
-    title: "Deploy latest release",
-    status: "done",
-    priority: "low",
-    assignee: {
-      id: "u4",
-      name: "Mike Johnson",
+    {
+        id: "done",
+        title: "Done",
     },
-  },
-];
+]
 
-export default function KambanBoard () {
+export default function KambanBoard ({issues}) {
 
-    const issuesQuery = useIssues(projectId)
-    const [issues, setIssues] = useState([])
+    const [boardIssues, setBoardIssues] = useState(issues)
 
-    if (issuesQuery.isLoading) return <div> Loading ...</div>
-    if (issuesQuery.isError) return <div>  Failed to load issues </div>
-
-    const todoIssues = issues.filter(
-        (issues) => issues.status === "to_do"
-    )
-
-    const inProjgressIssues = issues.filter(
-        (issues) => issues.status === "in_progress"
-    )
-
-    const inReviewIssues = issues.filter(
-        (issues) => issues.status === "in_review"
-    )
-
-    const doneIssues = issues.filter(
-        (issues) => issues.status === "done"
-    )
+    useEffect(() => (
+        setBoardIssues(issues)
+    ), [issues])
 
     const handleDragEnd = (event) => {
         const { source, target } = event.operation
@@ -83,7 +38,7 @@ export default function KambanBoard () {
         const issueId = source.id
         const newStatus = target.id
 
-        setIssues((prevIssues) =>
+        setBoardIssues((prevIssues) =>
             prevIssues.map((issue) =>
                 issue.id === issueId ? {...issue, status: newStatus} : issue
     ))
@@ -91,44 +46,22 @@ export default function KambanBoard () {
 
     return(
         <DragDropProvider onDragEnd={handleDragEnd}>
-            <div>
-                <h1>Kanabn Board</h1>
-
-                <div>
-                    <KanbanColumn id="to_do" title="To Do">
-                        {todoIssues.map((issue) => (
+            {columns.map((column) => (
+                <KanbanColumn
+                    key={column.id}
+                    id={column.id}
+                    title={column.title}
+                >
+                    {boardIssues
+                        .filter((issue) => issue.status === column.id)
+                        .map((issue) => (
                             <IssueCard
                                 key={issue.id}
                                 issue={issue}
                             />
                         ))}
-                    </KanbanColumn>
-                    <KanbanColumn id="in_progress" title="In Progress">
-                        {inProjgressIssues.map((issue) => (
-                            <IssueCard
-                                key={issue.id}
-                                issue={issue}
-                            />
-                        ))}
-                    </KanbanColumn>
-                    <KanbanColumn id="in_review" title="In Review">
-                        {inReviewIssues.map((issue) => (
-                            <IssueCard
-                                key={issue.id}
-                                issue={issue}
-                            />
-                        ))}
-                    </KanbanColumn>
-                    <KanbanColumn id="done" title="Done">
-                        {doneIssues.map((issue) => (
-                            <IssueCard
-                                key={issue.id}
-                                issue={issue}
-                            />
-                        ))}
-                    </KanbanColumn>
-                </div>
-            </div>
+                </KanbanColumn>
+            ))}
         </DragDropProvider>
     )
 }

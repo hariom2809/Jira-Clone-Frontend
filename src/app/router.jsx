@@ -6,6 +6,7 @@ import LoginPage from "../features/auth/pages/LoginPage"
 import RegisterPage from "../features/auth/pages/RegisterPage"
 import Dashboard from "../features/project/pages/Dashboard"
 import KanbanBoard from "../features/kanban/pages/KanbanBoard"
+import ProjectBoard from "../features/project/pages/ProjectBoard";
 
 export const router = createBrowserRouter([
     {
@@ -28,8 +29,8 @@ export const router = createBrowserRouter([
                 element: <Dashboard />,
             },
             {
-                path: "/kanbanboard",
-                element: <KanbanBoard />
+                path: "/project/:projectId/",
+                element: <ProjectBoard />
             },
         ]
     },

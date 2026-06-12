@@ -66,7 +66,7 @@ export default function RegisterForm () {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 error={errors.confirmPassword}
             />
-            {errors.api && <p> {errors.api} </p>}
+            {errors.api && <p className="text-red-500"> {errors.api} </p>}
 
             <Button 
                 type="submit"
