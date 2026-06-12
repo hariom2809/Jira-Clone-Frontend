@@ -29,7 +29,7 @@ export default function ProjectBoard() {
             />
 
             <KanbanBoard 
-                issues={Query.data?.results || []}
+                issues={issueQuery.data?.results || []}
             />
         </PageContainer>
     )
