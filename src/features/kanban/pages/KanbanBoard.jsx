@@ -2,38 +2,24 @@ import { useEffect, useState } from "react"
 import { DragDropProvider } from "@dnd-kit/react";
 import IssueCard from "../../issue/components/IssueCard"
 import KanbanColumn from "../components/KanbanColumn"
-
-const columns = [
-    {
-        id: "to_do",
-        title: "To Do",
-    },
-    {
-        id: "in_progress",
-        title: "In Progress",
-    },
-    {
-        id: "in_review",
-        title: "In Review",
-    },
-    {
-        id: "done",
-        title: "Done",
-    },
-]
+import { kanbanColumns } from "../utils/columns"
 
 export default function KambanBoard ({issues}) {
 
-    const [boardIssues, setBoardIssues] = useState(issues)
+    const [boardIssues, setBoardIssues] = useState([])
 
     useEffect(() => (
         setBoardIssues(issues)
     ), [issues])
 
+    const getColumnIssues = (columnId) => {
+        return boardIssues.filter( issue => issue.status === columnId )
+    }
+
     const handleDragEnd = (event) => {
         const { source, target } = event.operation
 
-        if (target) return
+        if (!target) return
 
         const issueId = source.id
         const newStatus = target.id
@@ -46,15 +32,13 @@ export default function KambanBoard ({issues}) {
 
     return(
         <DragDropProvider onDragEnd={handleDragEnd}>
-            {columns.map((column) => (
+            {kanbanColumns.map((column) => (
                 <KanbanColumn
                     key={column.id}
                     id={column.id}
                     title={column.title}
                 >
-                    {boardIssues
-                        .filter((issue) => issue.status === column.id)
-                        .map((issue) => (
+                    {getColumnIssues(column.id).map((issue) => (
                             <IssueCard
                                 key={issue.id}
                                 issue={issue}

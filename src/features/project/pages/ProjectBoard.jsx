@@ -6,7 +6,6 @@ import ProjectDetail from "../components/ProjectDetail"
 import KanbanStatsGrid from "../../kanban/components/KanbanStstaGrid"
 import KanbanBoard from "../../kanban/pages/KanbanBoard"
 import { useListIssues  } from "../../issue/hooks/useListIssues"
-import { Query } from "@tanstack/react-query"
 
 export default function ProjectBoard() {
 
