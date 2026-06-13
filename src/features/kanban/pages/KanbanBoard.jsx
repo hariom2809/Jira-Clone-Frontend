@@ -3,8 +3,11 @@ import { DragDropProvider } from "@dnd-kit/react";
 import IssueCard from "../../issue/components/IssueCard"
 import KanbanColumn from "../components/KanbanColumn"
 import { kanbanColumns } from "../utils/columns"
+import { useUpdateIssue } from "../../issue/hooks/useUpdateIssue"
 
 export default function KambanBoard ({issues}) {
+
+    const updateIssue = useUpdateIssue()
 
     const [boardIssues, setBoardIssues] = useState([])
 
@@ -28,6 +31,14 @@ export default function KambanBoard ({issues}) {
             prevIssues.map((issue) =>
                 issue.id === issueId ? {...issue, status: newStatus} : issue
     ))
+
+    updateIssue.mutate({
+        issueId,
+        issueData: {
+            status: newStatus,
+        }
+    })
+
     }
 
     return(
