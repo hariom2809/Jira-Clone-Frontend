@@ -1,4 +1,4 @@
-export default function -Card ({ children, onClick, className }) {
+export default function Card ({ children, onClick, className }) {
     return (
         <div
             onClick={onClick}

@@ -43,20 +43,22 @@ export default function KambanBoard ({issues}) {
 
     return(
         <DragDropProvider onDragEnd={handleDragEnd}>
-            {kanbanColumns.map((column) => (
-                <KanbanColumn
+            <div className="grid grid-cols-4 gap-4">
+                {kanbanColumns.map((column) => (
+                    <KanbanColumn
                     key={column.id}
                     id={column.id}
                     title={column.title}
-                >
-                    {getColumnIssues(column.id).map((issue) => (
+                    >
+                        {getColumnIssues(column.id).map((issue) => (
                             <IssueCard
-                                key={issue.id}
-                                issue={issue}
+                            key={issue.id}
+                            issue={issue}
                             />
                         ))}
-                </KanbanColumn>
-            ))}
+                    </KanbanColumn>
+                ))}
+            </div>
         </DragDropProvider>
     )
 }
