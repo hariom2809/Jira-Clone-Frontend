@@ -28,6 +28,7 @@ export default function ProjectBoard() {
             />
 
             <KanbanBoard 
+                projectId={projectId}
                 issues={issueQuery.data?.results || []}
             />
         </PageContainer>

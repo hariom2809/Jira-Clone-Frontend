@@ -5,8 +5,8 @@ import ProtectedRoute from "../routes/ProtectedRoute"
 import LoginPage from "../features/auth/pages/LoginPage"
 import RegisterPage from "../features/auth/pages/RegisterPage"
 import Dashboard from "../features/project/pages/Dashboard"
-import KanbanBoard from "../features/kanban/pages/KanbanBoard"
-import ProjectBoard from "../features/project/pages/ProjectBoard";
+import ProjectBoard from "../features/project/pages/ProjectBoard"
+import IssuePage from "../features/issue/pages/IssuePage"
 
 export const router = createBrowserRouter([
     {
@@ -32,6 +32,10 @@ export const router = createBrowserRouter([
                 path: "/project/:projectId/",
                 element: <ProjectBoard />
             },
+            {
+                path: "/project/:projectId/issue/:issueId",
+                element: <IssuePage />,
+            }
         ]
     },
 ])

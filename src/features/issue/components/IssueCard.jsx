@@ -1,7 +1,7 @@
 import { useDraggable } from "@dnd-kit/react"
 import Card from "../../../components/ui/Card"
 
-export default function IssueCard ({ issue }) {
+export default function IssueCard ({ issue, onClick }) {
 
     const { ref } = useDraggable({
         id: issue.id,
@@ -12,7 +12,7 @@ export default function IssueCard ({ issue }) {
     })
 
     return (
-        <Card className="cursor-grab hover:border-blue-500 transition-colors">
+        <Card onClick={onClick} className="cursor-grab hover:border-blue-500 transition-colors">
             <div ref={ref} className="space-y-3">
                 <h4 className="text-[#F9FAFB] font-medium leading-snug">
                     {issue.title}

@@ -4,8 +4,11 @@ import IssueCard from "../../issue/components/IssueCard"
 import KanbanColumn from "../components/KanbanColumn"
 import { kanbanColumns } from "../utils/columns"
 import { useUpdateIssue } from "../../issue/hooks/useUpdateIssue"
+import { useNavigate } from "react-router-dom";
 
-export default function KambanBoard ({issues}) {
+export default function KambanBoard ({projectId, issues}) {
+
+    const navigate = useNavigate()
 
     const updateIssue = useUpdateIssue()
 
@@ -54,6 +57,7 @@ export default function KambanBoard ({issues}) {
                             <IssueCard
                             key={issue.id}
                             issue={issue}
+                            onClick={() => navigate(`/project/${projectId}/issue/${issue.id}`)}
                             />
                         ))}
                     </KanbanColumn>
