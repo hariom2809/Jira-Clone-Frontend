@@ -1,13 +1,7 @@
-import { useGetIssue } from "../hooks/useGetIssue"
 import IssueStatsRow from "./IssueStatsRow"
+import { formatDate } from "../../../utils/formatDate"
 
-export default function IssueStats({ issueId }) {
-
-    const issueQuery = useGetIssue(issueId)
-    const issue = issueQuery.data
-
-    if (issueQuery.isLoading) return <div> Loading... </div>
-    if (issueQuery.isError) return <div> Something went wrong </div>
+export default function IssueStats({ issue }) {
 
     return (
         <div className="flex flex-col gap-8 py-2">
@@ -19,9 +13,9 @@ export default function IssueStats({ issueId }) {
 
             <div className="gap-3">
                 <h3 className="text-2xl text-[#F9FAFB] font-bold"> Dates </h3>
-                <IssueStatsRow label="Raised on" value={issue.created_at} />
-                <IssueStatsRow label="Last update" value={issue.updated_at} />
-                <IssueStatsRow label="Due Date" value={issue.due_date} />
+                <IssueStatsRow label="Raised on" value={formatDate(issue.created_at)} />
+                <IssueStatsRow label="Last update" value={formatDate(issue.updated_at)} />
+                <IssueStatsRow label="Due Date" value={formatDate(issue.due_date)} />
             </div>
 
             <div className="gap-3">
