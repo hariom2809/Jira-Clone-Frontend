@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import PaeContainer from "../../../components/ui/PageContainer"
 import IssueDetail from "../components/IssueDetail"
+import IssueStats from "../components/IssueStats"
 
 export default function IssuePage() {
 
@@ -8,13 +9,13 @@ export default function IssuePage() {
 
     return (
         <PaeContainer>
-            <div className="flex grid-6">
+            <div className="flex grid-6 gap-4">
                 <div className="w-7/10">
                     <IssueDetail issueId={issueId} />
                 </div>
 
                 <div className="w-3/10">
-                    Sidebar 
+                    <IssueStats issueId={issueId} />
                 </div>
             </div>
         </PaeContainer>
