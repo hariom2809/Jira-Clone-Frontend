@@ -1,5 +1,7 @@
 import IssueStatsRow from "./IssueStatsRow"
 import { formatDate } from "../../../utils/formatDate"
+import { formatStatus } from "../../../utils/formatStatus"
+import { formatPriority } from "../../../utils/formatPriority"
 
 export default function IssueStats({ issue }) {
 
@@ -7,8 +9,8 @@ export default function IssueStats({ issue }) {
         <div className="flex flex-col gap-8 py-2">
             <div className="gap-3">
                 <h3 className="text-2xl text-[#F9FAFB] font-bold"> Details </h3>
-                <IssueStatsRow label="Status" value={issue.status} />
-                <IssueStatsRow label="Priority" value={issue.priority} />
+                <IssueStatsRow label="Status" value={formatStatus(issue.status)} />
+                <IssueStatsRow label="Priority" value={formatPriority(issue.priority)} />
             </div>
 
             <div className="gap-3">
