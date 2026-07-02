@@ -9,14 +9,6 @@ export default function IssueDetail({ issue }) {
                 title={issue.title}
                 description={issue.description}
             />
-            
-
-            <hr />
-
-            <h3>
-                Comments
-            </h3>
-            <p>No comments yet</p>
         </Card>
     )
 }

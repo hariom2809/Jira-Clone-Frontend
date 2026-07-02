@@ -3,6 +3,7 @@ import { useGetIssue } from "../hooks/useGetIssue"
 import PaeContainer from "../../../components/ui/PageContainer"
 import IssueDetail from "../components/IssueDetail"
 import IssueStats from "../components/IssueStats"
+import CommentSection from "../../comment/components/CommentSection"
 
 export default function IssuePage() {
 
@@ -18,6 +19,7 @@ export default function IssuePage() {
             <div className="flex grid-6 gap-4">
                 <div className="w-7/10">
                     <IssueDetail issue={issue} />
+                    <CommentSection issueId={issueId} />
                 </div>
 
                 <div className="w-3/10">
