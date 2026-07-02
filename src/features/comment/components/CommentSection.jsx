@@ -1,5 +1,6 @@
 import { useListComments } from "../hooks/useListComments"
 import CommentCard from "./CommentCard"
+import CommentForm from "./CommentForm"
 
 export default function CommentSection({ issueId }) {
 
@@ -11,6 +12,8 @@ export default function CommentSection({ issueId }) {
     return (
         <div>
             <h2> Comments </h2>
+
+            <CommentForm issueId={issueId} />
 
             {commentQuery.data?.results.map(
                 (comment) => ( <CommentCard 
