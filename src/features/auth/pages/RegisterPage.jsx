@@ -9,9 +9,9 @@ function RegisterPage() {
       subtitle="Sign up"
     >
         <RegisterForm />
-        <p className="text-center text-sm text-[#F9FAFB] mt-6">
+        <p className="text-center text-sm text-foreground mt-6">
             Already have an account
-            <Link to="/login" className="ml-1 text-blue-400 hover:text-blue-300">
+            <Link to="/login" className="ml-1 text-primary hover:text-primary-hover">
                 Log in
             </Link>
         </p>

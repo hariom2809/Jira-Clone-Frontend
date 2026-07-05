@@ -49,6 +49,7 @@ export default function RegisterForm () {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 error={errors.email}
+                placeholder="demo@email.com"
             />
 
             <Input 
@@ -57,6 +58,7 @@ export default function RegisterForm () {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 error={errors.password}
+                placeholder="Password"
             />
 
             <Input 
@@ -65,6 +67,7 @@ export default function RegisterForm () {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 error={errors.confirmPassword}
+                placeholder="Confirm Password"
             />
             {errors.api && <p className="text-red-500"> {errors.api} </p>}
 

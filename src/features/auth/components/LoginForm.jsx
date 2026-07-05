@@ -38,6 +38,7 @@ const LoginForm = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="demo@email.com"
         />
 
         <Input 
@@ -45,6 +46,7 @@ const LoginForm = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="demo@1234"
         />
 
         <Button 

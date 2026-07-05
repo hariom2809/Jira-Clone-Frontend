@@ -10,9 +10,9 @@ export default function LoginPage () {
       subtitle="Log in"
     >
       <LoginForm />
-      <p className="text-center text-sm text-[#F9FAFB] mt-6">
+      <p className="text-center text-sm text-foreground mt-6">
         Don't have an account:
-        <Link to="/register" className="ml-1 text-blue-400 hover:text-blue-300">
+        <Link to="/register" className="ml-1 text-primary transition-colors- hover:text-primary-hover">
           Sign up
         </Link>
       </p>
