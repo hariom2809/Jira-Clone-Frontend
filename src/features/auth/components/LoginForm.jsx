@@ -52,7 +52,7 @@ const LoginForm = () => {
         <Button 
           type="submit"
           disabled={loading}
-          className='w-full mt-5'
+          className='w-full mt-5 text-white'
         >
           {loading ? "Signing in..." : "Sign in"}
         </Button>

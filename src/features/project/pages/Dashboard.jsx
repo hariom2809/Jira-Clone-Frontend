@@ -21,7 +21,10 @@ export default function Dashboard() {
         <Header
           title="Projects"
           actions={
-            <Button onClick={() => setShowProjectForm(true)}>
+            <Button 
+              onClick={() => setShowProjectForm(true)}
+              className="rounded-2xl text-white"
+            >
               Create Project
             </Button>
           }

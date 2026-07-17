@@ -74,7 +74,7 @@ export default function RegisterForm () {
             <Button 
                 type="submit"
                 disabled={loading}
-                className="mt-5 w-full"
+                className="mt-5 w-full text-white"
             >
                 {loading ? "Registering ..." : "Register"}
             </Button>
