@@ -18,8 +18,12 @@ export const AuthProvider = ({children}) => {
     }
 
     const logout = async () => {
-        await logoutUser()
-        setCurrentUser(null)
+        try{
+            await logoutUser()
+        }
+        finally{
+            setCurrentUser(null)
+        }
     }
 
     const fetchCurrentUser = async () => {
