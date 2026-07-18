@@ -41,9 +41,9 @@ export default function RegisterForm () {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-4">
 
-            <Input 
+            <Input
                 label="Email"
                 type="email"
                 value={email}
@@ -69,12 +69,12 @@ export default function RegisterForm () {
                 error={errors.confirmPassword}
                 placeholder="Confirm Password"
             />
-            {errors.api && <p className="text-red-500"> {errors.api} </p>}
+            {errors.api && <p className="text-sm text-danger">{errors.api}</p>}
 
-            <Button 
+            <Button
                 type="submit"
                 disabled={loading}
-                className="mt-5 w-full text-white"
+                className="w-full"
             >
                 {loading ? "Registering ..." : "Register"}
             </Button>

@@ -1,26 +1,46 @@
 import { useListComments } from "../hooks/useListComments"
+import Card from "../../../components/ui/Card"
 import CommentCard from "./CommentCard"
 import CommentForm from "./CommentForm"
 
 export default function CommentSection({ issueId }) {
 
     const commentQuery = useListComments(issueId)
-    
-    if (commentQuery.isLoading) return <div> Loading... </div>
-    if (commentQuery.isError) return <div> Something went wrong </div> 
+
+    const comments = commentQuery.data?.results || []
 
     return (
-        <div>
-            <h2> Comments </h2>
+        <Card className="space-y-5">
+            <h2 className="text-base font-semibold text-foreground">
+                Comments
+                {!commentQuery.isLoading && (
+                    <span className="ml-2 text-sm font-normal text-text-muted">
+                        {comments.length}
+                    </span>
+                )}
+            </h2>
 
             <CommentForm issueId={issueId} />
 
-            {commentQuery.data?.results.map(
-                (comment) => ( <CommentCard 
-                    key={comment.id} 
-                    comment={comment} 
-                />
-            ))}
-        </div>
+            {commentQuery.isLoading && (
+                <p className="text-sm text-text-muted">Loading comments…</p>
+            )}
+
+            {commentQuery.isError && (
+                <p className="text-sm text-danger">Could not load comments.</p>
+            )}
+
+            {!commentQuery.isLoading && !comments.length && (
+                <p className="text-sm text-text-muted">
+                    No comments yet. Be the first to add one.
+                </p>
+            )}
+
+            <div className="space-y-3">
+                {comments.map((comment) => (
+                    <CommentCard key={comment.id} comment={comment} />
+                ))}
+            </div>
+        </Card>
     )
 }

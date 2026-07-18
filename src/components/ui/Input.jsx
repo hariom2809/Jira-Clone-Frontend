@@ -10,13 +10,15 @@ export default function Input ({label, error, className = "", ...props}) {
 
             <input
                 className={`
+                    w-full
                     px-4
-                    py-3
-                    bg-surface
+                    py-2.5
+                    bg-background
                     border
                     rounded-xl
+                    text-sm
                     text-foreground
-                    placeholder-text-muted
+                    placeholder:text-text-muted
                     focus:outline-none
                     focus:ring-2
                     focus:ring-primary/20

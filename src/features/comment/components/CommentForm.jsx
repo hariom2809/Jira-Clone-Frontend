@@ -16,24 +16,27 @@ export default function CommentForm({ issueId }) {
             body
         },
         {
-            onSuccess: () => {setBody("")}
-        },
-    )
+            onSuccess: () => { setBody("") }
+        })
     }
 
     return (
-        <>
-            <Input
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-                placeholder="Add comment"
-            />
+        <div className="flex items-start gap-3">
+            <div className="flex-1">
+                <Input
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+                    placeholder="Add a comment…"
+                />
+            </div>
 
             <Button
                 onClick={handleSubmit}
+                disabled={isPending || !body.trim()}
             >
-                {isPending ? "Posting..." : "Post"}
+                {isPending ? "Posting…" : "Post"}
             </Button>
-        </>
+        </div>
     )
 }

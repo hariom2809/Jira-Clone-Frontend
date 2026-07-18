@@ -14,18 +14,24 @@ export default function Dashboard() {
     const query = useProject()
     const [showProjectForm, setShowProjectForm] = useState(false)
 
-    if (query.isLoading) return <div> Loading </div>
+    if (query.isLoading) {
+      return (
+        <div className="flex h-full items-center justify-center text-sm text-text-muted">
+          Loading projects…
+        </div>
+      )
+    }
 
     return (
       <PageContainer>
         <Header
           title="Projects"
+          subtitle="Manage and track all of your team's projects"
           actions={
-            <Button 
+            <Button
               onClick={() => setShowProjectForm(true)}
-              className="rounded-2xl text-white"
             >
-              Create Project
+              + Create Project
             </Button>
           }
         />

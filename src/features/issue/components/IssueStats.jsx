@@ -1,70 +1,60 @@
 import IssueStatsRow from "./IssueStatsRow"
+import Card from "../../../components/ui/Card"
 import { formatDate } from "../../../utils/formatDate"
 import StatusBadge from "../../../components/ui/StatusBadge"
 import PriorityBadge from "../../../components/ui/PriorityBadge"
 
+function Section({ title, children }) {
+    return (
+        <div>
+            <h3 className="mb-1 text-xs font-semibold uppercase tracking-wider text-text-muted">
+                {title}
+            </h3>
+            <div>{children}</div>
+        </div>
+    )
+}
+
 export default function IssueStats({ issue }) {
 
     return (
-        <div className="flex flex-col gap-10 py-2">
-            <div className="gap-3">
-                <h3 
-                    className="text-2xl text-[#F9FAFB] font-bold"
-                > 
-                    Details 
-                </h3>
-
-                <IssueStatsRow 
-                    label="Status" 
-                    value={<StatusBadge status={issue.status} /> } 
+        <Card className="sticky top-0 flex flex-col gap-6">
+            <Section title="Details">
+                <IssueStatsRow
+                    label="Status"
+                    value={<StatusBadge status={issue.status} />}
                 />
-
-                <IssueStatsRow 
-                    label="Priority" 
-                    value={<PriorityBadge priority={issue.priority} /> }
+                <IssueStatsRow
+                    label="Priority"
+                    value={<PriorityBadge priority={issue.priority} />}
                 />
-            </div>
+            </Section>
 
-            <div className="gap-3">
-                <h3 
-                    className="text-2xl text-[#F9FAFB] font-bold"
-                > 
-                    Dates 
-                </h3>
-
-                <IssueStatsRow 
-                    label="Raised on" 
-                    value={formatDate(issue.created_at)} 
+            <Section title="Dates">
+                <IssueStatsRow
+                    label="Raised on"
+                    value={formatDate(issue.created_at)}
                 />
-
-                <IssueStatsRow 
-                    label="Last update" 
-                    value={formatDate(issue.updated_at)} 
+                <IssueStatsRow
+                    label="Last update"
+                    value={formatDate(issue.updated_at)}
                 />
-
-                <IssueStatsRow 
-                    label="Due Date" 
-                    value={formatDate(issue.due_date)} 
+                <IssueStatsRow
+                    label="Due date"
+                    value={formatDate(issue.due_date)}
                 />
-            </div>
+            </Section>
 
-            <div className="gap-3">
-                <h3 
-                    className="text-2xl text-[#F9FAFB] font-bold"
-                > 
-                    People 
-                </h3>
-
-                <IssueStatsRow 
-                    label="Reporter" 
-                    value={issue.reporter.name} 
+            <Section title="People">
+                <IssueStatsRow
+                    label="Reporter"
+                    value={issue.reporter.name}
                 />
-
-                <IssueStatsRow 
-                    label="Assign To" 
-                    value={issue.assignee} 
+                <IssueStatsRow
+                    label="Assigned to"
+                    value={issue.assignee || "Unassigned"}
                 />
-            </div>
-        </div>
+            </Section>
+        </Card>
     )
 }

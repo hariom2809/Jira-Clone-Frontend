@@ -46,12 +46,13 @@ export default function KambanBoard ({projectId, issues}) {
 
     return(
         <DragDropProvider onDragEnd={handleDragEnd}>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {kanbanColumns.map((column) => (
                     <KanbanColumn
                     key={column.id}
                     id={column.id}
                     title={column.title}
+                    count={getColumnIssues(column.id).length}
                     >
                         {getColumnIssues(column.id).map((issue) => (
                             <IssueCard

@@ -1,5 +1,6 @@
 import { useDraggable } from "@dnd-kit/react"
 import Card from "../../../components/ui/Card"
+import PriorityBadge from "../../../components/ui/PriorityBadge"
 
 export default function IssueCard ({ issue, onClick }) {
 
@@ -12,19 +13,20 @@ export default function IssueCard ({ issue, onClick }) {
     })
 
     return (
-        <Card onClick={onClick} className="cursor-grab hover:border-blue-500 transition-colors">
+        <Card
+            onClick={onClick}
+            className="cursor-grab p-4 transition-all duration-200 hover:border-primary/40 hover:shadow-md active:cursor-grabbing"
+        >
             <div ref={ref} className="space-y-3">
-                <h4 className="text-[#F9FAFB] font-medium leading-snug">
+                <h4 className="text-sm font-medium leading-snug text-foreground">
                     {issue.title}
                 </h4>
 
-                <div className="flex item-center justify-between">
-                    <span className="text-xs font-semibold uppercase">
-                        {issue.priority}
-                    </span>
+                <div className="flex items-center justify-between">
+                    <PriorityBadge priority={issue.priority} />
 
-                    <span className="text-xs text-[#9CA3AF]">
-                        {issue.number}
+                    <span className="text-xs font-medium text-text-muted">
+                        #{issue.number}
                     </span>
                 </div>
             </div>

@@ -13,8 +13,20 @@ export default function ProjectBoard() {
     const projectQuery = useGetProject(projectId)
     const issueQuery = useListIssues(projectId)
 
-    if (projectQuery.isLoading) return <div> Loading ... </div>
-    if (projectQuery.isError) return <div> Something went wrong </div>
+    if (projectQuery.isLoading) {
+        return (
+            <div className="flex h-full items-center justify-center text-sm text-text-muted">
+                Loading project…
+            </div>
+        )
+    }
+    if (projectQuery.isError) {
+        return (
+            <div className="flex h-full items-center justify-center text-sm text-danger">
+                Something went wrong.
+            </div>
+        )
+    }
 
     return (
         <PageContainer>

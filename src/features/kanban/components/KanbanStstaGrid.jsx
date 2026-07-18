@@ -19,11 +19,11 @@ export default function KanbanStatsGrid({ issues }) {
     ).length
 
     return (
-        <div className="grid gap-4 grid-cols-4">
-            <KanbanStatsCard title="To Do" value={todoIssues} />
-            <KanbanStatsCard title="In Progress" value={inProgessIssues} />
-            <KanbanStatsCard title="In Review" value={inReviewIssues} />
-            <KanbanStatsCard title="Done" value={doneIssues} />
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <KanbanStatsCard title="To Do" value={todoIssues} accent="bg-slate-400" />
+            <KanbanStatsCard title="In Progress" value={inProgessIssues} accent="bg-indigo-500" />
+            <KanbanStatsCard title="In Review" value={inReviewIssues} accent="bg-amber-500" />
+            <KanbanStatsCard title="Done" value={doneIssues} accent="bg-emerald-500" />
         </div>
     )
 }

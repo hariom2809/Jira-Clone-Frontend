@@ -1,12 +1,19 @@
-
 export default function IssueHeader({ title, description }) {
 
     return (
-        <>
-            <h1> {title} </h1>
+        <div className="space-y-6">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+                {title}
+            </h1>
 
-            <h3>Description</h3>
-            <p> {description} </p>
-        </>
+            <div>
+                <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-text-muted">
+                    Description
+                </h3>
+                <p className="whitespace-pre-wrap leading-relaxed text-foreground">
+                    {description || "No description provided."}
+                </p>
+            </div>
+        </div>
     )
 }

@@ -31,33 +31,35 @@ const LoginForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <Input 
-            label="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="demo@email.com"
-        />
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <Input
+          label="Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="demo@email.com"
+      />
 
-        <Input 
-            label="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="demo@1234"
-        />
+      <Input
+          label="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="demo@1234"
+      />
 
-        <Button 
-          type="submit"
-          disabled={loading}
-          className='w-full mt-5 text-white'
-        >
-          {loading ? "Signing in..." : "Sign in"}
-        </Button>
-      </form>
-    </div>
+      {error && (
+        <p className="text-sm text-danger">{error}</p>
+      )}
+
+      <Button
+        type="submit"
+        disabled={loading}
+        className="w-full"
+      >
+        {loading ? "Signing in..." : "Sign in"}
+      </Button>
+    </form>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useGetIssue } from "../hooks/useGetIssue"
-import PaeContainer from "../../../components/ui/PageContainer"
+import PageContainer from "../../../components/ui/PageContainer"
 import IssueDetail from "../components/IssueDetail"
 import IssueStats from "../components/IssueStats"
 import CommentSection from "../../comment/components/CommentSection"
@@ -12,22 +12,35 @@ export default function IssuePage() {
     const issueQuery = useGetIssue(issueId)
     const issue = issueQuery.data
 
-    if (issueQuery.isLoading) return <div> Loading... </div>
-    if (issueQuery.isError) return <div> Something went wrong </div>
+    if (issueQuery.isLoading) {
+        return (
+            <div className="flex h-full items-center justify-center text-sm text-text-muted">
+                Loading issue…
+            </div>
+        )
+    }
+
+    if (issueQuery.isError) {
+        return (
+            <div className="flex h-full items-center justify-center text-sm text-danger">
+                Something went wrong.
+            </div>
+        )
+    }
 
     return (
-        <PaeContainer>
-            <div className="flex grid-6 gap-4">
-                <div className="w-7/10">
+        <PageContainer>
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                <div className="space-y-6 lg:col-span-2">
                     <IssueDetail issue={issue} />
                     <CommentSection issueId={issueId} />
                     <ActivityLog issueId={issueId} />
                 </div>
 
-                <div className="w-3/10">
+                <div className="lg:col-span-1">
                     <IssueStats issue={issue} />
                 </div>
             </div>
-        </PaeContainer>
+        </PageContainer>
     )
 }
